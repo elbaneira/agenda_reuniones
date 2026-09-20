@@ -1,0 +1,108 @@
+{% extends 'agenda/base.html' %}
+
+{% block title %}Inicio - Dashboard Agenda{% endblock %}
+
+{% block content %}
+<div class="row mb-4 align-items-center">
+    <div class="col-md-8">
+        <h1 class="h2 text-primary">Bienvenida/o, {{ user.get_full_name|default:user.username }} 👋</h1>
+        <p class="text-muted">Resumen general de tus actividades y compromisos agendados.</p>
+    </div>
+    <div class="col-md-4 text-md-end">
+        <a href="{% url 'crear_reunion' %}" class="btn btn-success me-2">+ Nueva Reunión</a>
+        <a href="{% url 'lista_reuniones' %}" class="btn btn-outline-primary">Ver Agenda</a>
+    </div>
+</div>
+
+<!-- Tarjetas de Estadísticas -->
+<div class="row g-3 mb-4">
+    <!-- Total de Reuniones -->
+    <div class="col-sm-6 col-lg-3">
+        <div class="card border-0 shadow-sm bg-primary text-white h-100">
+            <div class="card-body">
+                <div class="d-flex justify-content-between align-items-center">
+                    <div>
+                        <h6 class="card-subtitle mb-1 text-white-50">Total Agendadas</h6>
+                        <h2 class="card-title mb-0 display-6 fw-bold">{{ total_reuniones }}</h2>
+                    </div>
+                    <div class="fs-1 opacity-50">📅</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Pendientes -->
+    <div class="col-sm-6 col-lg-3">
+        <div class="card border-0 shadow-sm bg-success text-white h-100">
+            <div class="card-body">
+                <div class="d-flex justify-content-between align-items-center">
+                    <div>
+                        <h6 class="card-subtitle mb-1 text-white-50">Activas / Pendientes</h6>
+                        <h2 class="card-title mb-0 display-6 fw-bold">{{ pendientes }}</h2>
+                    </div>
+                    <div class="fs-1 opacity-50">⏳</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Canceladas -->
+    <div class="col-sm-6 col-lg-3">
+        <div class="card border-0 shadow-sm bg-danger text-white h-100">
+            <div class="card-body">
+                <div class="d-flex justify-content-between align-items-center">
+                    <div>
+                        <h6 class="card-subtitle mb-1 text-white-50">Canceladas</h6>
+                        <h2 class="card-title mb-0 display-6 fw-bold">{{ canceladas }}</h2>
+                    </div>
+                    <div class="fs-1 opacity-50">🚫</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Categorías / Tipos -->
+    <div class="col-sm-6 col-lg-3">
+        <div class="card border-0 shadow-sm bg-info text-white h-100">
+            <div class="card-body">
+                <div class="d-flex justify-content-between align-items-center">
+                    <div>
+                        <h6 class="card-subtitle mb-1 text-white-50">Tipos de Reunión</h6>
+                        <h2 class="card-title mb-0 display-6 fw-bold">{{ total_tipos }}</h2>
+                    </div>
+                    <div class="fs-1 opacity-50">🏷️</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Próxima Reunión Destacada -->
+<div class="card shadow-sm border-0 mb-4">
+    <div class="card-header bg-white py-3">
+        <h5 class="card-title mb-0 text-dark fw-bold">📌 Próximo Compromiso Destacado</h5>
+    </div>
+    <div class="card-body">
+        {% if proxima_reunion %}
+            <div class="row align-items-center">
+                <div class="col-md-8">
+                    <span class="badge bg-primary mb-2">{{ proxima_reunion.tipo }}</span>
+                    <h3 class="h4 text-dark mb-1">{{ proxima_reunion.titulo }}</h3>
+                    <p class="text-muted mb-2">
+                        📅 <strong>Fecha:</strong> {{ proxima_reunion.fecha|date:"d/m/Y" }} a las {{ proxima_reunion.hora|time:"H:i" }} hrs.
+                    </p>
+                    <p class="mb-0"><strong>Participantes:</strong> {{ proxima_reunion.participantes }}</p>
+                </div>
+                <div class="col-md-4 text-md-end mt-3 mt-md-0">
+                    <a href="{% url 'detalle_reunion' proxima_reunion.id %}" class="btn btn-outline-primary">Ver Detalle Completo</a>
+                </div>
+            </div>
+        {% else %}
+            <div class="text-center py-4 text-muted">
+                <p class="mb-0">No tienes reuniones próximas pendientes en tu agenda.</p>
+                <a href="{% url 'crear_reunion' %}" class="btn btn-sm btn-success mt-2">+ Programar una reunión</a>
+            </div>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

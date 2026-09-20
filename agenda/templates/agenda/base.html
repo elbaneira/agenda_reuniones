@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Agenda Académica{% endblock %}</title>
+    <!-- CSS de Bootstrap 5 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="bg-light">
+
+    <!-- Navegación superior -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-4">
+        <div class="container">
+            <a class="navbar-brand" href="{% url 'inicio' %}">Agenda Académica</a>
+            <div class="navbar-nav ms-auto align-items-center">
+            {% if user.is_authenticated %}
+                <a class="nav-link text-white me-2" href="{% url 'lista_reuniones' %}">Reuniones</a>
+                <a class="nav-link text-white me-3" href="{% url 'lista_tipos' %}">Tipos</a>
+                <!-- Nombre del usuario activo -->
+                <span class="navbar-text text-white me-3">
+                    Hola, <strong>{{ user.username }}</strong>
+                </span>
+
+                <!-- Formulario para Cerrar Sesión -->
+                <form method="post" action="{% url 'logout' %}" class="d-inline">
+                    {% csrf_token %}
+                    <button type="submit" class="btn btn-outline-light btn-sm">
+                        Cerrar Sesión
+                    </button>
+                </form>
+            {% else %}
+                <a class="nav-link text-white" href="{% url 'login' %}">Iniciar Sesión</a>
+            {% endif %}
+            </div>
+        </div>
+    </nav>
+
+   <!-- Contenido principal -->
+    <div class="container pb-5">
+        <!-- Bloque de Mensajes Flotantes / Notificaciones -->
+        {% if messages %}
+            {% for message in messages %}
+                <div class="alert alert-{{ message.tags }} alert-dismissible fade show shadow-sm mb-4" role="alert">
+                    {% if message.tags == 'success' %}✅{% elif message.tags == 'warning' or message.tags == 'danger' %}🗑️{% else %}ℹ️{% endif %}
+                    {{ message }}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            {% endfor %}
+        {% endif %}
+
+        {% block content %}
+        {% endblock %}
+    </div>
+
+    <!-- JS de Bootstrap -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

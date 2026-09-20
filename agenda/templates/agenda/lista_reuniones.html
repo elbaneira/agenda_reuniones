@@ -1,0 +1,81 @@
+{% extends 'agenda/base.html' %}
+
+{% block title %}Lista de Reuniones{% endblock %}
+
+{% block content %}
+<div class="card shadow-sm mb-4">
+    <div class="card-body">
+        <div class="d-flex justify-content-between align-items-center mb-3">
+            <h2 class="h3 text-primary mb-0">Mis Reuniones</h2>
+            <div>
+                <a href="{% url 'lista_tipos' %}" class="btn btn-outline-primary me-2">Gestionar Tipos</a>
+                <a href="{% url 'crear_reunion' %}" class="btn btn-success">+ Nueva Reunión</a>
+            </div>
+        </div>
+
+        <!-- Buscador con clases de Bootstrap -->
+        <form method="GET" action="{% url 'lista_reuniones' %}" class="row g-2 mb-4">
+            <div class="col-md-6 col-lg-5">
+                <input type="text" 
+                       name="q" 
+                       value="{{ query|default:'' }}" 
+                       class="form-control" 
+                       placeholder="Buscar por título o participante...">
+            </div>
+            <div class="col-auto">
+                <button type="submit" class="btn btn-primary">Buscar</button>
+            </div>
+            {% if query %}
+            <div class="col-auto">
+                <a href="{% url 'lista_reuniones' %}" class="btn btn-outline-secondary">Limpiar</a>
+            </div>
+            {% endif %}
+        </form>
+
+        <!-- Tabla de Reuniones -->
+        <div class="table-responsive">
+            <table class="table table-hover align-middle">
+                <thead class="table-dark">
+                    <tr>
+                        <th>Fecha y Hora</th>
+                        <th>Título</th>
+                        <th>Tipo</th>
+                        <th>Estado</th>
+                        <th class="text-center">Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for reunion in reuniones %}
+                    <tr class="{% if reunion.estado == 'CANCELADA' or reunion.estado == 'Cancelada' %}table-danger text-muted text-decoration-line-through{% endif %}">
+                        <td>{{ reunion.fecha|date:"d/m/Y" }} {{ reunion.hora|time:"H:i" }}</td>
+                        <td><strong>{{ reunion.titulo }}</strong></td>
+                        <td><span class="badge bg-secondary">{{ reunion.tipo }}</span></td>
+                        <td>
+                            <span class="badge {% if reunion.estado == 'CANCELADA' or reunion.estado == 'Cancelada' %}bg-danger{% else %}bg-success{% endif %}">
+                                {{ reunion.estado }}
+                            </span>
+                        </td>
+                        <td class="text-center">
+                            <!-- Este botón te envía directo a la plantilla detalle_reunion.html -->
+                            <a href="{% url 'detalle_reunion' reunion.id %}" class="btn btn-info btn-sm text-white">Ver Detalle</a>
+                            <a href="{% url 'editar_reunion' reunion.id %}" class="btn btn-warning btn-sm">Editar</a>
+                            <a href="{% url 'eliminar_reunion' reunion.id %}" class="btn btn-danger btn-sm">Eliminar</a>
+                        </td>
+                    </tr>
+                    {% empty %}
+                    <tr>
+                        <td colspan="5" class="text-center text-muted py-4">
+                            {% if query %}
+                                No se encontraron reuniones con el término "{{ query }}". <a href="{% url 'lista_reuniones' %}">Ver todas</a>.
+                            {% else %}
+                                No hay reuniones registradas. <a href="{% url 'crear_reunion' %}">Crear una nueva</a>.
+                            {% endif %}
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+{% endblock %}
