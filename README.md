@@ -78,7 +78,9 @@ De esta manera, las operaciones de la agenda quedan asociadas al usuario autenti
 
 ## 📽️ Demostración del Proyecto
 
-[![Ver demostración en YouTube](https://img.youtube.com/vi/y0VXxNCjSyU/maxresdefault.jpg)](https://youtu.be/y0VXxNCjSyU)
+## 📽️ Demostración del Proyecto
+
+[![Ver demostración en YouTube](https://img.youtube.com/vi/y0VXxNCjSyU/hqdefault.jpg)](https://youtu.be/y0VXxNCjSyU)
 
 👉 **[Haz clic aquí para ver el video directamente en YouTube](https://youtu.be/y0VXxNCjSyU)**
 
