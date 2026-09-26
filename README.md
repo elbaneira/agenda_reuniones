@@ -9,6 +9,7 @@ Este proyecto forma parte de mi proceso de aprendizaje en desarrollo web con Pyt
 ## 🚀 Funcionalidades
 
 ### 📌 Gestión de Reuniones
+
 La aplicación permite realizar el ciclo CRUD completo de reuniones:
 - **Crear** nuevas reuniones.
 - **Consultar** el detalle de una reunión.
@@ -21,16 +22,19 @@ La aplicación permite realizar el ciclo CRUD completo de reuniones:
   - 🔴 **Cancelada**
 
 ### 🗂️ Tipos de Reunión
+
 Permite administrar diferentes categorías/tipos de reuniones mediante operaciones CRUD:
 - Crear, consultar, editar y eliminar tipos de reunión.
 - Agregar una descripción detallada para cada tipo.
 
 ### 🔎 Búsqueda y Filtros
+
 La agenda incorpora herramientas avanzadas para facilitar la consulta de información:
 - Filtrar por tipo de reunión y estado.
 - Buscar de forma dinámica por título o participantes mediante consultas `Q` de Django.
 
 ### 📊 Panel de Inicio
+
 La página principal presenta un resumen ejecutivo asociado al usuario autenticado:
 - Total de reuniones.
 - Reuniones pendientes y canceladas.
@@ -53,11 +57,13 @@ Usuario (Django Auth)
        │ N:1
        ▼
 Tipo de Reunión
+
 ```text
 
 ---
 
 ## 🔐 Autenticación
+
 Las principales vistas de la aplicación requieren que el usuario haya iniciado sesión.
 Esto se implementa mediante el decorador:
 @login_required
@@ -71,14 +77,10 @@ De esta manera, las operaciones de la agenda quedan asociadas al usuario autenti
 
 ---
 
-## 📽️ Presentación en Video
+## 📽️ Demostración del Proyecto
 
 * **Duración:** ~2.5 minutos aprox.
 * **Contenido:** Sistema Automatizado de Gestión de reuniones en Python & ORM de Django.
-
-## 📽️ Demostración del Proyecto
-
-## 📽️ Demostración del Proyecto
 
 [![Ver demostración en YouTube](https://img.youtube.com/vi/y0VXxNCjSyU/hqdefault.jpg)](https://youtu.be/y0VXxNCjSyU)
 
@@ -155,6 +157,7 @@ http://127.0.0.1:8000/
 ---
 
 ## 🌐 Despliegue
+
 El proyecto fue preparado para ser desplegado en un entorno de hosting utilizando Gunicorn y un script de construcción para Django.
 La configuración actual incluye:
 build.sh
@@ -167,6 +170,7 @@ El despliegue puede realizarse utilizando Render conectado al repositorio de Git
 ---
 
 ## 📚 Aprendizajes del proyecto
+
 Este proyecto me permitió reforzar conceptos de desarrollo web con Django, especialmente:
 Creación y organización de un proyecto Django.
 Creación de aplicaciones.
@@ -189,4 +193,5 @@ Desarrollo Full Stack · Python · Django · Bases de Datos
 Un proyecto más en el camino de convertir el aprendizaje en proyectos reales.
 
 ---
+
 © 2026 Elba Neira
