@@ -102,6 +102,7 @@ Render para despliegue
 
 ## 📁 Estructura Principal del Proyecto
 
+```text
 agenda_reuniones/
 │
 ├── agenda/               # Aplicación principal de la agenda
@@ -121,7 +122,7 @@ agenda_reuniones/
 ├── manage.py             # CLI de comandos de Django
 ├── Procfile              # Instrucciones para el servidor Gunicorn
 └── requirements.txt      # Lista de dependencias del proyecto
-
+```
 El proyecto incluye un script build.sh que instala las dependencias, recopila los archivos estáticos (collectstatic) y ejecuta las migraciones (migrate) automáticamente durante el proceso de despliegue.
 
 ---
