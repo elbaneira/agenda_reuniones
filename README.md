@@ -45,31 +45,29 @@ La página principal presenta un resumen ejecutivo asociado al usuario autentica
 
 ## 🗄️ Modelo de Datos
 
-El proyecto utiliza el sistema de modelos y el ORM nativo de Django. La estructura relacional se define a continuación:
+El proyecto utiliza el sistema de modelos y ORM de Django.
 
 ```text
 Usuario (Django Auth)
-       │
-       │ 1:N
-       ▼
-    Reunión
-       │
-       │ N:1
-       ▼
+  │
+  │ 1:N
+  ▼
+Reunión
+  │
+  │ N:1
+  ▼
 Tipo de Reunión
-
-```text
-
+```
 ---
 
-### 📽️ Presentación en Video
+## 📽️ Presentación en Video
 
 * **Duración:** ~2.5 minutos aprox.
 * **Contenido:** Demostración del funcionamiento de la Agenda de Reuniones en Django.
 
 [![Ver demostración en YouTube](https://img.youtube.com/vi/y0VXxNCjSyU/hqdefault.jpg)](https://youtu.be/y0VXxNCjSyU)
 
-👉 **[Haz clic aquí si la imagen no abre el video](https://youtu.be/y0VXxNCjSyU)**
+👉 **[Haz clic aquí para ver el video en YouTube directamente](https://youtu.be/y0VXxNCjSyU)**
 
 ---
 
