@@ -65,9 +65,20 @@ Esto se implementa mediante el decorador:
 from django.contrib.auth.decorators import login_required
 
 @login_required
-def lista_reuniones(request):
-    ...
+def lista_reuniones(request): ...
+
 De esta manera, las operaciones de la agenda quedan asociadas al usuario autenticado.
+
+---
+
+## 📽️ Presentación en Video
+
+* **Duración:** ~2.5 minutos aprox.
+* **Contenido:** Sistema Automatizado de Gestión de Mano de Obra - SGMO en Python & Django.
+
+[![Ver Video en YouTube](https://img.youtube.com/vi/y0VXxNCjSyU/maxresdefault.jpg)](https://youtu.be/y0VXxNCjSyU)
+
+👉 **[Haz clic aquí si la imagen no abre el video](https://youtu.be/y0VXxNCjSyU)**
 
 ---
 
