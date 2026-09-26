@@ -74,7 +74,7 @@ De esta manera, las operaciones de la agenda quedan asociadas al usuario autenti
 ## 📽️ Presentación en Video
 
 * **Duración:** ~2.5 minutos aprox.
-* **Contenido:** Sistema Automatizado de Gestión de Mano de Obra - SGMO en Python & Django.
+* **Contenido:** Sistema Automatizado de Gestión de reuniones en Python & ORM de Django.
 
 ## 📽️ Demostración del Proyecto
 
