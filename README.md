@@ -62,6 +62,17 @@ Tipo de Reunión
 
 ---
 
+### 📽️ Presentación en Video
+
+* **Duración:** ~2.5 minutos aprox.
+* **Contenido:** Demostración del funcionamiento de la Agenda de Reuniones en Django.
+
+[![Ver demostración en YouTube](https://img.youtube.com/vi/y0VXxNCjSyU/hqdefault.jpg)](https://youtu.be/y0VXxNCjSyU)
+
+👉 **[Haz clic aquí si la imagen no abre el video](https://youtu.be/y0VXxNCjSyU)**
+
+---
+
 ## 🔐 Autenticación
 
 Las principales vistas de la aplicación requieren que el usuario haya iniciado sesión.
@@ -74,17 +85,6 @@ from django.contrib.auth.decorators import login_required
 def lista_reuniones(request): ...
 
 De esta manera, las operaciones de la agenda quedan asociadas al usuario autenticado.
-
----
-
-## 📽️ Demostración del Proyecto
-
-* **Duración:** ~2.5 minutos aprox.
-* **Contenido:** Sistema Automatizado de Gestión de reuniones en Python & ORM de Django.
-
-[![Ver demostración en YouTube](https://img.youtube.com/vi/y0VXxNCjSyU/hqdefault.jpg)](https://youtu.be/y0VXxNCjSyU)
-
-👉 **[Haz clic aquí para ver el video directamente en YouTube](https://youtu.be/y0VXxNCjSyU)**
 
 ---
 
